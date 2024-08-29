@@ -1,0 +1,20 @@
+.users {
+    width: 100%; /* Use full width */
+    overflow-x: auto;
+    white-space: nowrap;
+    margin: 20px auto;
+    min-height: 80vh;
+    border: solid gray 1px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse; /* Ensures borders are collapsed */
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid black;
+  }
+  

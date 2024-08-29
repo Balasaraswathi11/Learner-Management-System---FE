@@ -1,0 +1,51 @@
+.lecture-page {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.left {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; /* Optional: Centers text within the items */
+}
+
+.lecture-number {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease;
+}
+
+.lecture-number.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.common-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.common-btn[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
