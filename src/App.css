@@ -1,35 +1,18 @@
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-
-  font-family: Arial, sans-serif;
-}
-
-.common-btn {
-  background-color: #8a4baf;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 10px;
-
-  &:hover {
-    background-color: #5f357e;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 16px;
-  }
-}
-/* App.css */
+/* App.css or Footer.css */
 
 html, body {
   height: 100%;
   margin: 0;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
 }
 
 .footer {
@@ -37,13 +20,5 @@ html, body {
   color: white;
   padding: 20px;
   text-align: center;
-}
-
-.footer-content a {
-  color: white;
-  text-decoration: none;
-}
-
-.footer-content a:hover {
-  text-decoration: underline;
+  width: 100%;
 }

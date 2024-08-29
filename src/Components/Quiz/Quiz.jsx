@@ -5,8 +5,8 @@ import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import { UserData } from '../context/UserContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-const Quiz = () => {
+import "./Quiz.css"
+const Quiz = ({ courseId }) => {
   const [title, setTitle] = useState('');
   const [questions, setQuestions] = useState([{ question: '', option1: '', option2: '', option3: '', option4: '', answer: '', title: '' }]);
   const [loading, setLoading] = useState(false);
@@ -34,7 +34,7 @@ const Quiz = () => {
     setLoading(true);
 
     try {
-      const { data } = await axios.post(`${server}/api/admin/course/${id}/quiz`, { title, questions }, {
+      const { data } = await axios.post(`${server}/api/admin/course/${courseId}/quiz`, { title, questions }, {
         headers: {
           token: localStorage.getItem('token'),
         },
@@ -53,7 +53,7 @@ const Quiz = () => {
 
   return (
     <div className="container mt-5">
-      <h2 className="text-center mb-4">
+      <h2 className="text-center mb-4 text-light">
         {user && user.role === 'admin' ? `Create a Quiz for Course ID: ${id}` : 'Take Quiz'}
       </h2>
       {user && user.role === 'admin' ? (

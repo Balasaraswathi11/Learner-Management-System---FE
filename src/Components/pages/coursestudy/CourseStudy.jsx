@@ -7,7 +7,7 @@ import Quiz from '../../Quiz/Quiz'
 import AssignmentCreate from '../../Assignment/AssignmentCreate'
 const CourseStudy = ({user}) => {
     const params=useParams()
-    const {getcoursebyid,course}=CourseData()
+    const { getCourseById,course}=CourseData()
     const navigate=useNavigate()
     console.log(course)
 
@@ -16,11 +16,11 @@ if(user && user.role!=="admin" && !user.subscription.includes(params.id)){
 }
 
     useEffect(()=>{
-      getcoursebyid(params.id)
+      getCourseById(params.id)
     },[])
   return (<>
      {course && (
-      <div className="course-study-page bg-dark">
+      <div className="course-study-page bg-dark ">
         <img src={`${server}/${course.image}`} alt="" width={350} />
         <h1 style={{color:"white",margin:"10px"}}> {course.title}</h1>
         <h2><span style={{color:"white",margin:"10px"}}>Course description:</span></h2> <br /> <h5> {course.description}</h5>

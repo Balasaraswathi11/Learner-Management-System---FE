@@ -1,14 +1,16 @@
 import axios from "axios";
 import { createContext, useContext, useState, useEffect } from "react";
 import { server } from "../../main";
+
 // Create the context
 const CourseContext = createContext();
 
 // Context provider component
 export const CourseContextProvider = ({ children }) => {
   const [courses, setCourses] = useState([]);
-const[course,setCourse]= useState([])
-const[mycourse,setmycourse]=useState([])
+  const [course, setCourse] = useState({});
+  const [mycourse, setMycourse] = useState([]);
+
   // Fetch course data from the API
   async function fetchCourse() {
     try {
@@ -19,37 +21,34 @@ const[mycourse,setmycourse]=useState([])
     }
   }
 
-
-  async function getcoursebyid(id){
+  async function getCourseById(id) {
     try {
-        const{data}= await axios.get(`${server}/api/course/${id}`);
-        setCourse(data.course)
+      const { data } = await axios.get(`${server}/api/course/${id}`);
+      setCourse(data.course);
     } catch (error) {
-        console.log(error)
+      console.error(`Failed to fetch course with ID ${id}:`, error); // Improved error logging
     }
   }
 
-  async function fetchmycourse(){
+  async function fetchMyCourse() {
     try {
-      const {data}=await axios.get(`${server}/api/course/mycourse`,{
-        headers:{token:localStorage.getItem("token")}
-      })
-  setmycourse(data.courses)
+      const { data } = await axios.get(`${server}/api/course/mycourse`, {
+        headers: { token: localStorage.getItem("token") }
+      });
+      setMycourse(data.courses);
     } catch (error) {
-      console.log(error)
+      console.error("Failed to fetch my courses:", error); // Improved error logging
     }
-    
   }
 
   // Use effect to fetch courses on component mount
   useEffect(() => {
-  
     fetchCourse();
-    fetchmycourse()
+    fetchMyCourse();
   }, []); // Empty dependency array means this runs once on mount
 
   return (
-    <CourseContext.Provider value={{ courses, fetchCourse , getcoursebyid, course,fetchmycourse,mycourse}}>
+    <CourseContext.Provider value={{ courses, fetchCourse, getCourseById, course, fetchMyCourse, mycourse }}>
       {children}
     </CourseContext.Provider>
   );

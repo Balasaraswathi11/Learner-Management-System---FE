@@ -6,41 +6,53 @@
     text-align: center;
     width: 250px;
     transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   
-    &:hover {
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
-    }
-  
-    .course-image {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-  
-    h3 {
-      font-size: 18px;
-      color: #333;
-      margin-bottom: 10px;
-    }
-  
-    p {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 5px;
-    }
-  }
-  .common-btn {
-    margin-top: 10px;
+}
+
+.course-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+}
+
+p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.common-btn {
+    margin-top: auto;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     background-color: #333;
     color: #ffffff;
     cursor: pointer;
-  }
-  .common-btn:hover {
+}
+
+.common-btn:hover {
     opacity: 0.8;
-  }
-  
+}
+
+.course-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
