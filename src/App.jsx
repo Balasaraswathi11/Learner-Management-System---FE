@@ -118,7 +118,7 @@ const App = () => {
 />
             <Route
               path="/reset-password/:token"
-              element={isAuth ? <Reset user={user} /> : <Login />}
+              element={ <Reset user={user} />}
             />
              <Route
               path="/quiz/:quizId/result"
@@ -127,6 +127,8 @@ const App = () => {
              
    </Routes>
    <Footer />
+
+
    </BrowserRouter>}
    </>  )
 }

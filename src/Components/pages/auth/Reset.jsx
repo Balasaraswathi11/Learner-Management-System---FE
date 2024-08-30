@@ -10,7 +10,7 @@ import './auth.css';
 
 const Reset = () => {
   const navigate = useNavigate();
-  const params = useParams();
+  const { token } = useParams();
 
   const formik = useFormik({
     initialValues: {
@@ -23,13 +23,19 @@ const Reset = () => {
     }),
     onSubmit: async (values) => {
       try {
+        console.log("Submitting reset request with token:", token); // Debugging line
+        console.log("Password to reset:", values.password); // Debugging line
+
         const { data } = await axios.post(
-          `${server}/api/user/reset/${params.token}`,
+          `${server}/api/user/reset/${token}`,
           { password: values.password }
         );
+
+        console.log("Response from server:", data); // Debugging line
         toast.success(data.message);
         navigate("/login");
       } catch (error) {
+        console.error("Error during reset:", error); // Debugging line
         toast.error(error.response ? error.response.data.message : 'An error occurred');
       }
     },
@@ -56,7 +62,7 @@ const Reset = () => {
           <button
             type="submit"
             disabled={formik.isSubmitting}
-            className="btn btn-"
+            className="btn btn-primary"
           >
             {formik.isSubmitting ? "Please Wait..." : "Reset Password"}
           </button>
