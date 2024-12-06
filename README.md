@@ -22,3 +22,5 @@ This is the frontend of the **Learner Management System**, a web application des
 - **Bootstrap**: Frontend framework for styling and ensuring responsive design.
 - **React Hot Toast**: Provides toast notifications for feedback to the user.
 
+### [Backend](https://github.com/Balasaraswathi11/LMS_Learner-Management-System-BE.git) 
+### [Netlify](https://learnermanagementsystem-fe.netlify.app)
